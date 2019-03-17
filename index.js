@@ -11,7 +11,7 @@ var wsInstance = null
 
 mqtt.on("connect", async()=>{
   try {
-    mqtt.subscribe(process.env.TOPIC || '6107445', function (err) {
+    mqtt.subscribe(process.env.TOPIC || 'jiaxi/ye', function (err) {
       if (!err) {
         console.log('Successfully connected and subscribed.')
       }

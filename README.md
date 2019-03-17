@@ -1,45 +1,37 @@
-**Installation**
-
-1. Download Node.js on your computer (v8.0 or higher recommended)
-
-2. Clone this repository
-
-3. Install dependencies
-
-   `$ npm i`
-
-4. Edit `config.js`
-   
-   Please change the value of `subAgent.homeServerPassword`, `subAgent.topic`, 
-
-   For more information about configuration, please refer to the "Architecture and Launching" section below.
+# MQTT TLS Agent
 
 
+## Try me
 
-**Architecture and Launching**
+An instance of this demo is already running on 
+wss://yejiaxi.cn:3355
+.
+This instance is listening the MQTT server broker.mqttdashboard.com for topic "jiaxi/ye"
 
-**Subsciption Agent**
 
-| Role | Default Entity Address | How to Launch | 
-|:---:|:---:|:---|:---|
-| Public Sensor | http://www.hivemq.com/demos/websocket-client/ | Open this webpage; <br/> Click "connect"; <br/> In "Publish", set "Topic" to some random string (DON'T USE DEFAULT TOPIC!); |
-| ↓ |
-| Public Server | broker.mqttdashboard.com | 
-| ↓ |
-| Subsciption Agent | this program | In `config.js`, change the value of `subAgent.topic` to the topic in public sensor, and change the value of `subAgent.homeServerPassword` to Jiaxi Ye's PERM#; <br/> Run `$ npm run subAgent` |
-| ↓ |
-| Home Server | yejiaxi.cn <br/> (username: jiaxiye; password: my PERM#)
-| ↓ |
-| Home Monitor | http://www.hivemq.com/demos/websocket-client/ | Open this webpage IN ANOTHER TAB; <br/> Set "Host" to `yejiaxi.cn` and click "Connect"; <br/> In "Subscriptions", click "Add New Topic Subsciption"; <br/> Enter the same topic as in public sensor, then click "Subscribe"; |
+You can connect to it using this wss client 
+<https://jsbin.com/pavapuf/edit?js,console>
 
-**TLS Agent (still buggy, sorry)**
+Then, goto <http://www.hivemq.com/demos/websocket-client/> to publish some data. Simply click [Connect] on the right, input "jiaxi/ye" into [Topic] and write something in [Message], then click [Publish]. Then you can see your data in the wss client.
 
-| Role | Default Entity Address | How to Launch |
-|:---:|:---:|:---|:---|
-| Home Sensor | http://www.hivemq.com/demos/websocket-client/ | Open this webpage; <br/> Click "connect"; <br/> In "Publish", set "Topic" to some random string (DON'T USE DEFAULT TOPIC!); |
-| ↓ |
-| Home Server | broker.mqttdashboard.com |
-| ↓ |
-| TLS Agent | this program | run `$ npm run tlsAgent` |
-| ↓ |
-| Remote Private Monitor | this program | run `$ npm run tlsClient` |
+
+
+## Installation
+
+1.  Install Node.js (v8.0 or higher recommended) and npm
+
+2.  Clone this repository
+
+3.  Install dependencies (in project directory)
+
+    `$ npm i`
+
+4.  Prepare your SSL certificate and key files
+
+5.  Launch program
+
+    `$ node index.js`
+
+    or launch with custom configuration, e.g. 
+
+    `$ PORT=3355 TOPIC="mytopic" node index.js`  
