@@ -8,12 +8,22 @@ wss://yejiaxi.cn:3355
 This instance is listening the MQTT server broker.mqttdashboard.com for topic "jiaxi/secure"
 
 
-You can connect to it using this wss client 
+You can connect to it using this WSS client 
 <https://jsbin.com/pavapuf/edit?js,console>
 
-Then, goto <http://www.hivemq.com/demos/websocket-client/> to publish some data. Simply click [Connect] on the right, input "jiaxi/secure" into [Topic] and write something in [Message], then click [Publish]. Then you can see your data in the wss client.
+Then, go to <http://www.hivemq.com/demos/websocket-client/> to publish some data. Simply click [Connect] on the right, input "jiaxi/secure" into [Topic] and write something in [Message], then click [Publish]. Then you can see your data in the WSS client.
 
+## Architecture
 
+| Role | Demo Instance |
+|:---:|:---:|
+| Public Sensor | www.hivemq.com/demos/websocket-client/|
+| ↓ ||
+| Public Server | broker.mqttdashboard.com | 
+| ↓ ||
+| TLS Agent | this program on yejiaxi.cn | 
+| ↓ ||
+| Remote Private Monitor | jsbin.com/pavapuf/edit |
 
 ## Installation
 
